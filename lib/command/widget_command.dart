@@ -4,17 +4,15 @@ import 'package:flutter/material.dart';
 
 class CommandWidget extends StatelessWidget {
   final execs = [
-    _Command('External Tools: dumpsys-x21', 'scrcpy',
-        ['--window-x 0 --window-y 0 -s 98badcb9']),
-    _Command('External Tools: dumpsys-google', 'scrcpy',
-        ['--window-x 0 --window-y 0 -s 8AWX10UKL']),
-    // _Command('External Tools: scrcpy-top', ''),
-    // _Command('External Tools: scrcpy-google', ''),
-    // _Command('External Tools: scrcpy-x21', ''),
-    // _Command('External Tools: gradle-tasks', ''),
-    // _Command('External Tools: gradle-properties', ''),
-    // _Command('External Tools: gradle-version', ''),
-    // _Command('External Tools: gradle-clean', ''),
+    _Command('scrcpy-x21', 'scrcpy --window-x 0 --window-y 0 -s 98badcb9'),
+    _Command('scrcpy-google', 'scrcpy --window-x 0 --window-y 0 -s 8AWX10UKL'),
+    // _Command('scrcpy-top', ''),
+    // _Command('scrcpy-google', ''),
+    // _Command('scrcpy-x21', ''),
+    // _Command('gradle-tasks', ''),
+    // _Command('gradle-properties', ''),
+    // _Command('gradle-version', ''),
+    // _Command('gradle-clean', ''),
   ];
 
   @override
@@ -29,7 +27,7 @@ class CommandWidget extends StatelessWidget {
           onTap: () {
             logI(execs[index].title);
             _Command c = execs[index];
-            runExec(command: c.command, params: c.params);
+            runExec(c.command);
           },
           child: ListTile(
             title: Text(execs[index].title),
@@ -37,21 +35,12 @@ class CommandWidget extends StatelessWidget {
         );
       },
     );
-    // return ListView(
-    //
-    //   children: [
-    //     ListTile(
-    //       title: Text('Map'),
-    //     ),
-    //   ],
-    // );
   }
 }
 
 class _Command {
   String title;
   String command;
-  List<String> params;
 
-  _Command(this.title, this.command, this.params);
+  _Command(this.title, this.command);
 }
